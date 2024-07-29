@@ -1,22 +1,20 @@
-import { APP_INITIALIZER,NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular'
 import { HttpLink } from 'apollo-angular/http'
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { MessageService } from 'primeng/api';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { InMemoryCache } from '@apollo/client/core'
-import { LanguagePipe, LanguageService, WebsiteAttributesService } from 'projects/imakeapp-shared';
-import { CustomHttpInterceptorInterceptor } from './interceptors/custom-http-interceptor.interceptor';
-import { ErrorInterceptor } from './interceptors/error.interceptor';
-import { AppEffect } from './core/store/store/app.effects';
+import { LanguagePipe } from 'projects/imakeapp-shared';
+import { CustomHttpInterceptorInterceptor } from './core/interceptors/custom-http-interceptor.interceptor';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { AppReducer } from './core/store/store/app.reducers';
 import { ProductsEffects } from 'projects/imakeapp-products/src/lib/domain/facades/store/products.effects';
 import { Products_reducer } from 'projects/imakeapp-products/src/lib/domain/facades/store/products.reducers';
@@ -29,26 +27,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { NgxUiLoaderModule, NgxUiLoaderHttpModule } from "ngx-ui-loader";
 import { ToastModule } from 'primeng/toast';
 import { PanelMenuModule } from 'primeng/panelmenu';
-import { ThemeLoaderDirective } from './core/directives/themes-loader.directive';
-import { SidebarComponent } from './homeFeature/sidebar/sidebar.component';
+
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { AppRoutingModule } from './core/interceptors/app-routing.module';
 
-
-// export function appInitializerFactory(
-//   languageService: LanguageService,
-//   attributeThemeService: WebsiteAttributesService,
-//   cookie_s:CookieService
-// ) {
-//   console.log(cookie_s)
-
-//   return () => Promise.all([
-//     languageService.request_site_languages(),
-//     attributeThemeService.get_site_theme()
-//   ]).then(() => {});
-
-// }
 
 
 
@@ -59,7 +43,6 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ConfirmDialogModule,

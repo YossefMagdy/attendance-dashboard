@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './AuthFeature/login/login.component';
-import { TopLevelResolver } from './homeFeature/resolver/home.resolver';
-import { CanAccessGuardService } from './core/guard/can-access.service';
+import { LoginComponent } from '../../AuthFeature/login/login.component';
+import { TopLevelResolver } from '../../homeFeature/resolver/home.resolver';
+import { CanAccessGuardService } from '../guard/can-access.service';
 
 const routes: Routes = [
   {
@@ -15,9 +15,8 @@ const routes: Routes = [
   {
   path: "home",
   resolve:TopLevelResolver,
-  loadChildren: () => import('../app/homeFeature/home.module').then( (m)=> m.HomeModule ),
+  loadChildren: () => import('../../homeFeature/home.module').then( (m)=> m.HomeModule ),
   
-
 },
 
 

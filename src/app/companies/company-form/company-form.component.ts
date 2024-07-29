@@ -5,7 +5,6 @@ import { CookieService } from 'ngx-cookie-service';
 import { GenericService } from 'projects/image-gallaries/src/domain/services/generic.service';
 import { UserGroup } from 'src/app/core/enum/UserGroup';
 import { UserGroupService } from 'src/app/core/services/UserGroup/UserGroup';
-import { UsersService } from 'src/app/services/users.service';
 import { ComapanyService } from '../services/companies.service';
 
 @Component({
