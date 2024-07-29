@@ -1,0 +1,228 @@
+<!-- sign up -->
+<p-dialog
+  [(visible)]="show_dialog_box"
+  [modal]="true"
+  [style]="{ width: sign_up_modal_width_value }"
+  [resizable]="false"
+  [dismissableMask]="true"
+
+  class="text-center"
+  *ngIf="form_type == 2"
+  (onHide)="close_auth_modal();"
+>
+  <div  #modal>
+    <section id="scrolltotop"></section>
+    <div
+      class="d-flex text-center align-items-center justify-content-end w-100"
+    ></div>
+    <div class="w-100 px-4 py-0">
+      <h2 class="sign m-3">{{ "auth_modal_create_account_title" | translate: 'header' }}</h2>
+
+      <div class="mb-3">
+        <h3 class="up">
+          {{ "auth_modal_already_have_account" | translate: 'header' }}
+
+          <span (click)="redirect_to('sign-in')" class="cursor-pointer"> {{"sign_in" | translate: 'header'}}</span>
+        </h3>
+      </div>
+
+      <form [formGroup]="sign_up_form" class="inputs text-left my-4" (ngSubmit)="signing_up()">
+
+
+        <div class="position-relative my-3">
+          <label class="d-block">{{"auth_modal_first_name" | translate: 'header'}}</label>
+          <input
+            class="w-100 m-2 position-relative border-none"
+            type="text"
+            value=""
+            formControlName="first_name"
+            [validate]="{ form_group: sign_up_form, control_name: 'first_name',error:'auth_modal_first_name_placeholder' | translate: 'header'  }"
+            [mutate]="first_name_validate"
+          />
+          <span class="position-absolute required" #first_name_validate>{{ ("required" | translate: "product_details")}}</span>
+        </div>
+
+        <div class="position-relative my-3">
+          <label class="d-block">{{"auth_modal_last_name" | translate: 'header'}}</label>
+          <input
+            class="w-100 m-2 position-relative border-none"
+            type="text"
+            value=""
+            formControlName="last_name"
+            [validate]="{ form_group: sign_up_form, control_name: 'last_name',error:'auth_modal_last_name_placeholder' | translate: 'header'   }"
+            [mutate]="last_name_validate"
+          />
+          <span class="position-absolute required" #last_name_validate>{{ ("required" | translate: "product_details")}}</span>
+        </div>
+
+        <div class="position-relative my-3">
+          <label class="d-block">{{"auth_modal_username" | translate: 'header'}}</label
+          ><input
+            class="w-100 m-2 position-relative border-none"
+            type="text"
+            value=""
+            formControlName="username"
+            [validate]="{ form_group: sign_up_form, control_name: 'username',error:'auth_modal_username_placeholder' | translate: 'header'  }"
+            [mutate]="username_validate"
+          />
+          <span class="position-absolute required" #username_validate>{{ ("required" | translate: "product_details")}}</span>
+          <div></div>
+        </div>
+
+        <div class="position-relative my-3">
+          <label class="d-block">{{"auth_modal_password" | translate: 'header'}}</label>
+          <input
+            class="w-100 m-2 position-relative border-none"
+            type="password"
+            value=""
+            formControlName="password"
+            [validate]="{ form_group: sign_up_form, control_name: 'password' ,error:'auth_modal_password_placeholder' | translate: 'header' }"
+            [mutate]="password_validate"
+          />
+          <span class="position-absolute required" #password_validate>{{ ("required" | translate: "product_details")}}</span>
+        </div>
+
+
+        <div class="position-relative my-3">
+          <label class="d-block">{{"auth_modal_email" | translate: 'header'}}</label>
+          <input
+            class="w-100 m-2 position-relative border-none"
+            type="email"
+            value=""
+            formControlName="email"
+            [validate]="{ form_group: sign_up_form, control_name: 'email',error:'auth_modal_email_placeholder' | translate: 'header' }"
+            [mutate]="email_validate ? email_validate : null"
+          />
+          <span class="position-absolute required" #email_validate>{{ ("required" | translate: "product_details")}}</span>
+        </div>
+
+
+        <div class="position-relative my-3">
+          <label class="d-block">{{"auth_modal_phone" | translate: 'header'}}</label>
+          <input
+            class="w-100 m-2 position-relative border-none"
+            type="text"
+            pattern="[0-9]*"
+            formControlName="mobile"
+            [validate]="{ form_group: sign_up_form, control_name: 'mobile',error:'auth_modal_sign_up_failed_mobile_message' | translate: 'header' }"
+            [mutate]="mobile_validate"
+          />
+
+          <span class="position-absolute required" #mobile_validate>{{ ("required" | translate: "product_details")}}</span>
+
+        </div>
+
+        <div class="position-relative my-3">
+          <label class="d-block text-capatalize">{{"auth_modal_invitation_code" | translate: 'header'}}</label
+          ><input
+            class="w-100 m-2 position-relative border-none"
+            type="text"
+            value=""
+            formControlName="code"
+          />
+          <span class="position-absolute"></span>
+          <div></div>
+        </div>
+
+        <div class="account-btn width: 100 d-flex flex-row">
+          <button id="login-submit" type="submit" >
+            {{"auth_modal_create_account_title" | translate: 'header'}}
+          </button>
+        </div>
+
+
+      </form>
+    </div>
+
+
+
+
+  </div>
+
+</p-dialog>
+
+
+
+<!-- sign in -->
+<p-dialog
+  [(visible)]="show_dialog_box"
+  [modal]="true"
+  [resizable]="false"
+  [dismissableMask]="true"
+  class="text-center"
+  *ngIf="form_type == 1"
+  (onHide)="close_auth_modal();"
+>
+  <form [formGroup]="sign_in_form!">
+    <div
+      class="d-flex text-center align-items-center justify-content-end w-100"
+    ></div>
+
+    <div class="w-100 px-4 py-0">
+
+      <h3 class="sign m-3">{{ "auth_modal_title" | translate: "header" }}</h3>
+
+      <div class="mb-3">
+        <h3 class="up">
+          {{ "auth_modal_dont_have_account" | translate: "header" }}
+          <span (click)="redirect_to('sign-up')" class="cursor-pointer">
+            {{ "sign_up" | translate: "header" }}
+          </span>
+        </h3>
+      </div>
+
+      <div class="inputs text-left">
+
+        <div class="position-relative">
+          <label class="d-block">
+            {{ "auth_modal_username" | translate: "header" }}
+          </label>
+          <input
+          class="w-100 m-2 position-relative border-none"
+          type="text"
+          value=""
+          formControlName="username"
+          />
+          <span class="position-absolute"></span>
+          <div></div>
+        </div>
+
+        <div class="position-relative">
+          <label class="d-block">
+            {{ "auth_modal_password" | translate: "header" }}
+          </label>
+          <input
+            class="w-100 m-2 position-relative border-none"
+            type="password"
+            value=""
+            formControlName="password"
+          />
+          <span class="position-absolute"></span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="m-3 text-center">
+      <a routerLink="/my-account/forgot-password" (click)="show_dialog_box = false;">
+        {{ "auth_modal_forgot_password" | translate: "header" }}
+      </a>
+    </div>
+
+    <div class="account-btn width: 100 d-flex flex-row">
+      <button id="login-submit" class="mt-3" (click)="signing_in();">{{ "sign_in" | translate: "header" }}</button>
+    </div>
+
+  </form>
+</p-dialog>
+
+
+
+<!-- notification -->
+<app-notifications [notificationsData]="notifications" (toggle_notification_window_event)="toggleNotifocations();"></app-notifications>
+
+
+
+<!-- toast (messages) -->
+<p-toast position="top-right" key="tc"></p-toast>

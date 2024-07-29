@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <p-fileUpload
+        name="demo[]"
+        customUpload="true"
+        #fileUpload
+        (uploadHandler)="onUpload($event, fileUpload)"
+        multiple="multiple"
+        accept="image/*"
+        maxFileSize="1000000"
+      >
+        <ng-template pTemplate="content">
+          <ul *ngIf="uploadedFiles.length">
+            <li *ngFor="let file of uploadedFiles">
+              {{ file?.name }} - {{ file?.size }} bytes
+            </li>
+          </ul>
+        </ng-template>
+      </p-fileUpload>
+    </div>
+    <div class="row">
+      <span
+        *ngFor="let photo of photos; let p = index"
+        class="col-md-2 text-right"
+      >
+        <img
+          class="mb-2"
+          [src]="photo.photo"
+          (click)="cover = img"
+          width="100px"
+          height="100px"
+        />
+        <button
+          *ngIf="obj"
+          nz-popconfirm
+          nzPopconfirmTitle="هل انت متأكد من عملية الحذف؟"
+          nzPopconfirmPlacement="top"
+          (nzOnConfirm)="deletePhotos(photo['id'], p)"
+          class="btn btn-danger d-block mr-4"
+        >
+          <i nz-icon nzType="delete" nzTheme="outline"></i>
+        </button>
+      </span>
+    </div>
+
+    <button (click)="route()" class="btn btn-success btn-block mt-3">تم</button>
+  </div>
+</div>

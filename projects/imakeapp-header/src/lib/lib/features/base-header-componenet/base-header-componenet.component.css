@@ -1,0 +1,59 @@
+
+.sign {
+
+  font-weight: 600;
+  color: rgb(64, 69, 83);
+  font-size: 1.785rem;
+}
+
+.up {
+  font-size: 13px;
+}
+
+.up span {
+  color: rgb(56, 102, 223);
+}
+
+.inputs {
+  color: rgb(64, 69, 83);
+}
+
+.account-btn button {
+  flex: 1 1 0%;
+  color: rgb(56, 102, 223);
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  background-color: #fff;
+  user-select: none;
+}
+
+input {
+ border: none;
+
+}
+input:focus {
+  outline: none;
+}
+.inputs label{
+  color: rgb(126, 133, 155);
+}
+
+.inputs span  {
+  height: 1px;
+  width: 95%;
+  background-color: rgb(107, 107, 107);
+
+  left: 3%;
+  bottom: 10%;
+}
+.required {
+  height: 1px;
+  background-color: rgb(255, 64, 0);
+  width: 95%;
+  text-align: start;
+  font-size: 12px;
+  color: red;
+  left: 3%;
+  bottom: 10%;
+}

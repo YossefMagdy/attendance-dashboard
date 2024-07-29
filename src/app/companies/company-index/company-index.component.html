@@ -1,0 +1,80 @@
+
+
+
+<div 
+class="table-responsive card custom-br custom-shadow card custom-br custom-shadow"
+>
+
+
+    <nz-table
+    class="table forms-table table-striped"
+    [nzFrontPagination]="false"
+    [nzData]="data"
+    [nzLoading]="loading"
+    [nzPageSize]="20"
+    [nzPageIndex]="1"
+    [nzScroll]="{ x: '240px' }"
+    (nzPageIndexChange)="get()"
+    >
+
+    <!-- table: head -->
+        <thead>
+          <tr class="bg-light">
+            <th *ngFor="let head of heads; let i = index">
+                {{head}}
+            </th>
+          </tr>
+        </thead>
+
+    <!-- table: body -->
+        <tbody>
+            <tr *ngFor="let allData of data; let i = index">
+                
+                <td>{{allData?.name}}</td>
+                <td>{{allData?.email}}</td>
+                <td>{{allData?.mobile}}</td>
+
+                <p-image src="https://imake-app.com:4000/{{allData?.logo}}" value="jpeg" alt="Image" width="110" height="90" [preview]="true"></p-image>
+                <td>{{allData?.expire_date}}</td>
+
+                <td>
+                    <button
+                        class="btn btn-success"
+                        (click)="edit(allData)"><i nz-icon nzType="edit" nzTheme="outline"></i>تعديل</button>
+                    <button
+                        nz-popconfirm
+                        nzPopconfirmTitle="هل انت متأكد من عملية الحذف؟"
+                        nzPopconfirmPlacement="top"
+                        (nzOnConfirm)="delete(allData['id'], i)"
+                        class="btn btn-danger" ><i nz-icon nzType="delete" nzTheme="outline"></i>مسح</button>
+                </td>
+            </tr>
+        </tbody>
+
+    <!-- table: pagination -->
+        <!-- <button
+        class="btn btn-block btn-info button-custom"
+        style="margin-top: 20px;"
+        matRipple
+        nz-button
+        >
+            تحميل المزيد
+        </button> -->
+
+    </nz-table>
+
+
+    <!-- placeholder - table -->
+    <!-- <nz-table [nzData]="data" *ngIf="data.length == 0"></nz-table> -->
+
+<!-- table: pagination -->
+<button
+class="btn btn-block btn-info button-custom"
+style="margin: auto; font-weight: bold; font-family: monospace;"
+matRipple
+nz-button
+>
+    تحميل المزيد
+</button>
+
+</div>

@@ -1,0 +1,140 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="form" style="width: 100%;" autocomplete="off">
+                    <div class="row">
+                        <div formGroupName="data" >
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <nz-form-label>
+                                    <label for="photo">
+                                        الصورة
+                                    </label>
+                                </nz-form-label>
+                                <div class="input-group-lg">
+                                    <input
+                                        class="form-control"
+                                        nz-input
+                                        type="file"
+                                        formControlName="logo"
+                                        (change)="onFileChange($event)"
+                                        id="photo" />
+                                </div>
+                            </div>
+                        </div>
+   
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <nz-form-label>
+                                    <label for="full_name">
+                                        رقم الهاتف
+                                    </label>
+                                </nz-form-label>
+                                <div class="input-group-lg">
+                                    <input
+                                        class="form-control"
+                                        nz-input
+                                        type="text"
+                                        formControlName="mobile"
+                                        id="full_name" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <nz-form-label>
+                                    <label for="full_name">
+                                        تاريخ الانتهاء 
+                                    </label>
+                                </nz-form-label>
+                                <div class="input-group-lg">
+                                    <input
+                                        class="form-control"
+                                        nz-input
+                                        type="date"
+                                        formControlName="expire_date"
+                                        id="full_name" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <nz-form-label>
+                                    <label for="full_name">
+                                        الايميل
+                                    </label>
+                                </nz-form-label>
+                                <div class="input-group-lg">
+                                    <input
+                                        class="form-control"
+                                        nz-input
+                                        type="text"
+                                        formControlName="email"
+                                        id="full_name" />
+                                </div>
+                            </div>
+                        </div>
+    
+
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <nz-form-label>
+                                    <label for="full_name">
+                                        الاسم
+                                    </label>
+                                </nz-form-label>
+                                <div class="input-group-lg">
+                                    <input
+                                        class="form-control"
+                                        nz-input
+                                        type="text"
+                                        formControlName="name"
+                                        id="full_name" />
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+                   <div formGroupName="user" *ngIf="!obj">
+                    <div class="col-md-6">
+                        <div class="form-group mb-3">
+                            <nz-form-label>
+                                <label for="photo">
+                                    كلمة المرور
+                                </label>
+                            </nz-form-label>
+                            <div class="input-group-lg">
+                                <input
+                                    class="form-control"
+                                    nz-input
+                                    type="text"
+                                    formControlName="password"
+                                    id="photo" />
+                            </div>
+                        </div>
+                    </div>
+
+              
+         
+
+                   </div>
+
+                        <div class="col-md-2">
+                            <button
+                                class="btn btn-block"
+                                [class.btn-info]="!obj"
+                                [class.btn-success]="obj"
+                                matRipple
+                                nz-button
+                                [disabled]="form.invalid"
+                                (click)="(obj) ? edit() : add()">
+                                <i nz-icon nzType="loading" nzTheme="outline" *ngIf="isAdd"></i>
+                                {{(!obj) ? 'اضافة' : 'تعديل'}}
+                            </button>
+                        </div>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                        </div>

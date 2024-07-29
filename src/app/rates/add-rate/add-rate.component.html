@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <h2>تقييم الخدمة</h2>
+    <form #rateForm="ngForm">
+      <div class="p-grid p-dir-col ">
+        <div class="p-col" *ngFor="let question of questions; let i = index">
+          <div class="p-inputgroup justify-content-center">
+            <span class="p-inputgroup-addon">{{question}}</span>
+            <div class="card flex">
+
+            <p-rating  >
+                <ng-template pTemplate="cancel">
+                    <img src="https://primefaces.org/cdn/primeng/images/demo/rating/cancel.png" width="25px" height="25px" />
+                </ng-template>
+                <ng-template pTemplate="onicon">
+                    <img src="https://primefaces.org/cdn/primeng/images/demo/rating/custom-icon-active.png" width="25px" height="25px" />
+                </ng-template>
+                <ng-template pTemplate="officon">
+                    <img src="https://primefaces.org/cdn/primeng/images/demo/rating/custom-icon.png" width="25px" height="25px" />
+                </ng-template>
+            </p-rating>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" pButton label="إرسال التقييم" (click)="submit()" class="p-mt-2"></button>
+    </form>
+  </div>

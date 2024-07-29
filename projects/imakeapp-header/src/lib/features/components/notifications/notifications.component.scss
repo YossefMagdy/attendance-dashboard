@@ -1,0 +1,85 @@
+
+
+
+.notification-dropdown {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.notification-dropdown p {
+  white-space: initial;
+}
+
+
+.notificaiton-img {
+  width: 20%;
+}
+
+
+.product-about {
+  width: 80%;
+}
+
+
+.notification-dropdown .product-detail a {
+  background: white;
+}
+
+.notifi-box
+{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.curser-pointer
+{
+  cursor: pointer;
+}
+
+.hide-exit-window-text
+{
+  display: none !important;
+}
+
+.notifi-header-cell
+{
+  gap: 10px;
+}
+
+.product-about {
+  width: 80%;
+}
+
+
+::ng-deep {
+  .notifi-canvas
+  {
+    max-width: 360px !important;
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 992px)
+{
+  .notification-dropdown {
+    height: 100%;
+  }
+
+
+  .hide-exit-window-text
+  {
+    display: flex !important;
+  }
+
+
+  ::ng-deep {
+    .notifi-canvas
+    {
+      max-width: 100% !important;
+    }
+  }
+
+
+
+}

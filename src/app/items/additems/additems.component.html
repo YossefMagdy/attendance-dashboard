@@ -1,0 +1,98 @@
+
+
+<div class="row">
+    <div  class="col-12">
+    <h3>
+      المنتجات
+    </h3>
+    
+    </div>
+    
+    </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="form" style="width: 100%;" autocomplete="off">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <nz-form-label>
+                                    <label for="full_name">
+                                        الصورة
+                                    </label>
+                                </nz-form-label>
+                                <div class="input-group-lg">
+                                    <input
+                                        class="form-control"
+                                        nz-input
+                                        type="file"
+                                        formControlName="photo"
+                                        (change)="onFileChange($event)"
+                                        id="photo" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <nz-form-label>
+                                    <label for="full_name">
+                                        الإسم
+                                    </label>
+                                </nz-form-label>
+                                <div class="input-group-lg">
+                                    <input
+                                        class="form-control"
+                                        nz-input
+                                        type="text"
+                                        formControlName="full_name"
+                                        id="full_name" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <nz-form-label>
+                                    <label for="email">
+                                        السعر
+                                    </label>
+                                </nz-form-label>
+                                <div class="input-group-lg">
+                                    <input
+                                        class="form-control"
+                                        nz-input
+                                        type="text"
+                                        formControlName="email"
+                                        id="email" />
+                                </div>
+                            </div>
+                        </div>
+                     
+
+
+
+                       
+                      
+                
+                        </div>
+                        <div class="col-md-2">
+                            <button
+                                class="btn btn-block"
+                                [class.btn-info]="!obj"
+                                [class.btn-success]="obj"
+                                matRipple
+                                nz-button
+                                [disabled]="form.invalid"
+                                (click)="(obj) ? edit() : add()">
+                                <i nz-icon nzType="loading" nzTheme="outline" *ngIf="isAdd"></i>
+                                {{(!obj) ? 'اضافة' : 'تعديل'}}
+                            </button>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+                        </div>
+                        </div>

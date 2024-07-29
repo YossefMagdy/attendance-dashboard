@@ -1,0 +1,20 @@
+::ng-deep {
+  .p-datatable-wrapper {
+    width: 100%;
+  }
+  .row-option {
+    background-color: rgba(0, 0, 0, 0.15) !important;
+  }
+}
+.product-name{
+  max-width: 200px;
+  overflow: hidden;
+}
+
+.option-box
+{
+  width: max-content !important;
+}
+:host ::ng-deep  .p-button-label{
+  margin-right: 5px!important;
+}

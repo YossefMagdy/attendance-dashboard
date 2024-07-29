@@ -1,0 +1,24 @@
+
+
+:host ::ng-deep  .p-panelmenu .p-panelmenu-header > a {
+  padding: 1.0rem!important;
+}
+.p-panelmenu-icon {
+  order: 1; // to be the first item on right side.
+ }
+ :host ::ng-deep .p-menuitem-text {
+  flex-grow: 1; // to fill the whole space and push the icon to the end
+  margin-right: 10px;
+ }
+ ::ng-deep .custom-panel .p-panel-header {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+::ng-deep .custom-panel .p-panel-title {
+  margin-right: auto;
+}
+
+::ng-deep .custom-panel .p-panel .p-panel-icons-end {
+  margin-left: 0;
+}

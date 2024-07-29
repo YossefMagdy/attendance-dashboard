@@ -1,0 +1,262 @@
+/* You can add global styles to this file, and also import other style files */
+@import "swiper/css/bundle";
+@import "swiper/css/virtual";
+@import "swiper/css/pagination";
+
+:root
+{
+    --m-base-color : rgb(254, 238, 0);
+    --m-font-color-1 : #404554;
+    --m-font-color-2 : rgb(56, 102, 223);
+    --m-text-s-1 : 14px;
+    --m-text-s-2 : 15px;
+    --m-text-s-3 : 12px;
+    --m-text-s-4 : 20px;
+}
+
+
+
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+html , body
+{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background-color: #f7f7fa;
+
+}
+
+.visible-scroll-body{
+    overflow: visible;
+}
+
+.header-style-cus .search-style-cus input
+{
+    border-color: transparent;
+    outline: none;
+    width: 100%;
+}
+
+.align-center{
+    align-items: center;
+}
+
+swiper {
+    height: 518px;
+    width: 380px;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.my-profile-title{
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
+    color: #4D4D4D;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.account-box{
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
+    background-color: #fff;
+    color: #4D4D4D;
+    padding: 16px;
+    min-height: 200px;
+
+    .account-name{
+        box-sizing: border-box;
+        margin: 0px;
+        min-width: 0px;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        display: flex;
+
+        h2{
+            box-sizing: border-box;
+            margin: 0px 0px 8px;
+            min-width: 0px;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+
+        .edit{
+            color: #000;
+            font-size: 14px;
+            text-transform: unset;
+            box-shadow: unset;
+            -webkit-text-decoration: none;
+            text-decoration: none;
+            cursor: pointer;
+            outline: none;
+            -webkit-transition-property: box-shadow,background-color;
+            transition-property: box-shadow,background-color;
+            -webkit-transition-duration: 300ms;
+            transition-duration: 300ms;
+            -webkit-transition-timing-function: cubic-bezier(0.4,0.0,0.2,1);
+            transition-timing-function: cubic-bezier(0.4,0.0,0.2,1);
+            border-radius: 4px;
+            font-size: 14px;
+            width: auto;
+            height: 48px;
+            font-weight: bold;
+        }
+    }
+
+    .account-info{
+        box-sizing: border-box;
+        margin: 0px;
+        min-width: 0px;
+        flex-flow: column wrap;
+        display: flex;
+    }
+
+    .info{
+        h4, p{
+            font-weight: 300;
+            font-size: 16px;
+        }
+
+        p{
+            margin-bottom: 0;
+        }
+    }
+
+}
+
+.account-progress{
+    box-sizing: border-box;
+    margin: 0px 0px 15px;
+    min-width: 0px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    color: white;
+    padding: 7px 20px;
+    width: 100%;
+    border-radius: 20px;
+    background: linear-gradient(212.59deg, rgb(190, 47, 105), rgb(138, 21, 56) 100%, rgb(138, 21, 56) 0px);
+
+    .account-progress-message,
+    .account-progress-percentage{
+        display: flex;
+        -webkit-box-pack: end;
+        justify-content: flex-end;
+    }
+}
+
+
+.product_card_custom_m .ant-carousel .slick-dots-bottom
+{
+    z-index: 2;
+}
+
+html[dir="rtl"] {
+  .ant-card-body {
+    direction: rtl!important; /* Apply the direction from the CSS variable */
+  }
+  }
+
+
+
+.cursor-pointer
+{
+    cursor: pointer;
+}
+
+
+.cart-item-title *
+{
+    font-size: 1rem!important;
+}
+
+
+.product_card_custom_m .ant-card-body
+{
+    padding: 5px 5px 20px 5px !important;
+    border-radius: 0px !important;
+}
+
+.product-details-fav-btn span, .product-details-fav-btn-fill span
+{
+    font-size: 25px;
+    color: gray;
+}
+
+
+
+.custom-carousel
+{
+    direction: ltr !important;
+}
+
+:root {
+  --html-direction: rtl; /* Set the value of the CSS variable to the HTML direction */
+}
+
+.ant-card-body {
+  direction: var(--html-direction)!important; /* Apply the direction from the CSS variable */
+}
+.dir-ltr
+{
+    direction: ltr !important;
+}
+
+//---------------------------------
+//              Media screen
+//---------------------------------
+@media screen and (min-width: 992px)
+{
+
+    .m-w-lg-auto
+    {
+        width: auto !important;
+    }
+
+}
+
+
+@media screen and (max-width: 992px)
+{
+    .carousel-section .carousel-indicators
+    {
+        display: none;
+    }
+
+
+
+}

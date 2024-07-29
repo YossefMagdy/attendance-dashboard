@@ -1,0 +1,396 @@
+<p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+
+<div class="mb-3">
+  <app-generic-filter
+    [inputs]="productsIndexViewState.filterInputs"
+    (filter)="filter($event)"
+    (onDropDownChange)="handleFilterDropdownChange($event)"
+  ></app-generic-filter>
+</div>
+<p-messages
+  [(value)]="productsIndexViewState.messages"
+  [enableService]="false"
+></p-messages>
+<p-table
+  #dt
+  [value]="productsIndexViewState.products"
+  editMode="row"
+  dataKey="id"
+  [(selection)]="selectedProducts"
+>
+  <ng-template pTemplate="caption">
+    <div class="flex">
+      <button
+        pButton
+        (click)="confirmDeleteSelectedProducts()"
+        icon="pi pi-trash"
+        class="p-button-danger me-2 mr-sm-0"
+      ></button>
+      <button
+        type="button"
+        label="استخراج المنتجات اكسل"
+        pButton
+        pRipple
+        icon="pi pi-file"
+        (click)="getProductForExcel()"
+        class="me-2"
+        pTooltip="CSV"
+        tooltipPosition="bottom"
+      ></button>
+      <button
+        type="button"
+        (click)="fileInput.click()"
+        label="تحميل المنتجات اكسل"
+        pButton
+        pRipple
+        icon="pi pi-file-excel"
+        class="p-button-success me-2"
+        pTooltip="XLS"
+        tooltipPosition="bottom"
+      >
+        <input
+          type="file"
+          #fileInput
+          [(ngModel)]="productsIndexViewState.excelInput2"
+          style="display: none"
+          (change)="UploadExcel($event)"
+        />
+        ادخل بيانات المنتج كاملة
+      </button>
+    </div>
+  </ng-template>
+
+  <!-- HEADER -->
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 3rem">
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th></th>
+      <th>#</th>
+      <th *ngFor="let value of productsIndexViewState.configuration">
+        <p class="m-0 w-100 text-center">
+          {{ value.title }}
+        </p>
+      </th>
+      <th>
+        <div class="w-100 d-flex justify-content-center">Actions</div>
+      </th>
+    </tr>
+  </ng-template>
+
+  <!-- BODY -->
+  <ng-template
+    pTemplate="body"
+    let-product
+    let-expanded="expanded"
+    let-i="rowIndex"
+    let-editing="editing"
+  >
+    <tr [pEditableRow]="product">
+      <td>
+        <p-tableCheckbox [value]="product"></p-tableCheckbox>
+      </td>
+      <td>
+        <button
+          type="button"
+          pButton
+          pRipple
+          [pRowToggler]="product"
+          class="p-button-text p-button-rounded p-button-plain"
+          [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+        ></button>
+      </td>
+
+      <td>{{ product.id }}</td>
+
+      <td>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input
+              type="text"
+              pInputText
+              [(ngModel)]="productsIndexViewState.rowData![i].name_ar"
+            />
+          </ng-template>
+          <ng-template pTemplate="output">
+            <div class="d-flex justify-content-center">
+              <p class="m-0 w-100 text-center product-name">
+                {{ product.name_ar }}
+              </p>
+            </div>
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input
+              type="text"
+              pInputText
+              [(ngModel)]="productsIndexViewState.rowData![i].name_en"
+            />
+          </ng-template>
+          <ng-template pTemplate="output">
+            <div class="d-flex justify-content-center">
+              <p class="m-0 w-100 product-name text-center">
+                {{ product.name_en }}
+              </p>
+            </div>
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input
+              type="text"
+              pInputText
+              [(ngModel)]="productsIndexViewState.rowData![i].name_en"
+            />
+          </ng-template>
+          <ng-template pTemplate="output">
+            <div class="d-flex justify-content-center flex-column">
+              <div
+                class="m-0 w-100 product-name text-center"
+                *ngFor="let option of product?.attributes"
+              >
+                <span>{{ option.name_ar }}</span>
+                <div
+                  class="option-box mx-auto"
+                  *ngFor="let option_option of option?.attributes_options"
+                >
+                  <span>(</span>
+                  <span>{{ option_option.name_ar }}</span>
+                  <span>&nbsp;</span>
+                  <span class="fw-bold">:</span>
+                  <span>&nbsp;</span>
+                  <span>{{ option_option.price }}</span>
+                  <span class="text-uppercase">{{ currency }}</span>
+                  <span>)</span>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </p-cellEditor>
+      </td>
+
+      <td>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <p-inputNumber
+              [(ngModel)]="productsIndexViewState.rowData![i].price"
+              mode="decimal"
+            ></p-inputNumber>
+          </ng-template>
+          <ng-template pTemplate="output">
+            <p class="m-0 w-100 text-center">
+              {{ product.price }}
+            </p>
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td>
+        <div
+          class="d-flex justify-content-center"
+          (click)="
+            quickEditProduct({
+              id: product.id,
+              key: 'visible',
+              value: !product.visible
+            })
+          "
+        >
+          <i
+            class="fas fa-check-circle text-success fs-5"
+            *ngIf="product.visible"
+          ></i>
+          <i
+            class="fas fa-times-circle text-danger fs-5"
+            *ngIf="!product.visible"
+          ></i>
+        </div>
+      </td>
+      <td>
+        <div
+          class="d-flex justify-content-center"
+          (click)="
+            quickEditProduct({
+              id: product.id,
+              key: 'mark_as_new',
+              value: !product.mark_as_new
+            })
+          "
+        >
+          <i
+            class="fas fa-check-circle text-success fs-5"
+            *ngIf="product.mark_as_new"
+          ></i>
+          <i
+            class="fas fa-times-circle text-danger fs-5"
+            *ngIf="!product.mark_as_new"
+          ></i>
+        </div>
+      </td>
+      <td>
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <div class="d-flex justify-content-center">
+              <p-fileUpload
+                mode="basic"
+                chooseLabel="اختر"
+                accept="image/*"
+                [customUpload]="true"
+                (onSelect)="updateProductImage($event)"
+              ></p-fileUpload>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="output">
+            <p-image
+              [src]="product.photo || productsIndexViewState.defaultImg"
+              [preview]="true"
+              alt="Image"
+              width="100"
+            >
+            </p-image>
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td>
+        <div class="d-flex justify-content-center gap-2">
+          <button
+            *ngIf="!editing"
+            pButton
+            type="button"
+            pInitEditableRow
+            icon="fas fa-keyboard"
+            (click)="onRowEditInit(product, i)"
+            class="p-button-warning"
+          ></button>
+          <button
+            *ngIf="editing"
+            pButton
+            pRipple
+            type="button"
+            pSaveEditableRow
+            icon="pi pi-check"
+            (click)="onRowEditSave(product, i)"
+            class="p-button-rounded p-button-text p-button-success mr-2"
+          ></button>
+          <button
+            *ngIf="editing"
+            pButton
+            pRipple
+            type="button"
+            pCancelEditableRow
+            icon="pi pi-times"
+            (click)="onRowEditCancel(product, i)"
+            class="p-button-rounded p-button-text p-button-danger"
+          ></button>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            class="ui-button-info"
+            (click)="edit(product)"
+          ></button>
+          <button
+            pButton
+            (click)="confirmationForDeleteingProduct(product.id)"
+            icon="pi pi-trash"
+            class="p-button-danger"
+          ></button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="rowexpansion" let-i="rowIndex" let-product>
+    <tr>
+      <td colspan="10">
+        <p-table [value]="product.attributes">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>الصفة</th>
+              <th>عدد الخيارات</th>
+              <th>العمليات</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-attribute let-j="rowIndex">
+            <tr class="row-option">
+              <td>{{ attribute?.name_ar }}</td>
+              <td>{{ attribute?.attributes_options?.length }}</td>
+              <td>
+                <div class="d-flex gapp-2 align-items-center">
+                  <button
+                    pButton
+                    pRipple
+                    icon="pi pi-eye"
+                    class="p-button-rounded p-button-info"
+                    (click)="showAttributeOptionsModal(i, j)"
+                  ></button>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="4">There are no attribute for this product yet.</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </td>
+    </tr>
+  </ng-template>
+
+  <!-- no data -->
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="20">
+        <div
+          class="d-flex flex-column justify-content-center align-items-center py-6 gap-3 empty-table"
+        >
+          <i class="pi pi-inbox"></i>
+          <p>No Data</p>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-paginator
+  #myPaginator
+  [alwaysShow]="false"
+  [rows]="productsIndexViewState.productsFilter.limit"
+  [totalRecords]="productsIndexViewState.totalProducts!"
+  [rowsPerPageOptions]="[5, 10, 20, 30]"
+  (onPageChange)="paginate($event)"
+></p-paginator>
+
+<p-editor [style]="{ height: '20px' }"></p-editor>
+<p-dialog
+  header="خيارات الصفة"
+  [(visible)]="productsIndexViewState.attributeOptionsModalVisibility!"
+  [styleClass]="'w-50'"
+  [draggable]="false"
+  [modal]="true"
+  [dismissableMask]="true"
+  (onHide)="hideAttributeOptionsModal()"
+>
+  <app-product-attribute-options
+    [attribute_options]="productsIndexViewState.selectedAttributeOptions"
+    (showAttributeOptionsModal)="showAttributeOptionsModal()"
+  ></app-product-attribute-options>
+</p-dialog>
+<p-dialog
+  header="تعديل المنتج"
+  [(visible)]="productFormModalVisibility"
+  [styleClass]="'w-75'"
+  [draggable]="false"
+  [modal]="true"
+  [dismissableMask]="true"
+  (onHide)="hideProductFormModal()"
+>
+  <app-product-form></app-product-form>
+</p-dialog>

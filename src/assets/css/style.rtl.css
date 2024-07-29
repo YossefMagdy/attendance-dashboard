@@ -1,0 +1,33 @@
+
+ .catogery-section{
+text-align: right;
+ }
+.bg-transparent .after {
+    left: 0 !important;
+}
+.text{
+    text-align: right;
+}
+.p-carousel-items-content{
+    direction: ltr;
+}
+.inputs div{
+    text-align: right;
+}
+.inputs div span{
+    left: 10% !important;
+}
+.product-item{
+    direction: rtl;
+}
+.p-dialog-header  div {
+left: -12% !important;
+}
+.search{
+
+    top: 15% !important;
+    left: 6% !important;
+}
+.Order_Summary{
+  direction: rtl !important;
+}

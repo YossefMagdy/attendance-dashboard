@@ -1,0 +1,74 @@
+<div class="container mt-4">
+    <h2>اضافة حملة</h2>
+    <form #campaignForm="ngForm" (ngSubmit)="onSubmit()">
+      <div >
+        <label for="campaignName">اسم الحملة</label>
+        <input type="text" id="campaignName" name="campaignName" [(ngModel)]="campaignName" class="form-control" required>
+      </div>
+      <div >
+        <label>بداية الحملة</label>
+        <p-calendar name="durationFrom" [(ngModel)]="durationFrom" dateFormat="yy-mm-dd" [showIcon]="true" class="form-control" ></p-calendar>
+      </div>
+      <div >
+        <label>نهاية الحملة</label>
+        <p-calendar name="durationTo" [(ngModel)]="durationTo" dateFormat="yy-mm-dd" [showIcon]="true" class="form-control" ></p-calendar>
+      </div>
+      <div >
+        <label>التقييم</label>
+        <div class="row form-inline">
+            <div class="form-check form-control">
+                <input type="radio" id="single" name="single" [(ngModel)]="rating" value="s" class="form-check-input">
+                <label for="single" class="form-check-label">حملة فردية</label>
+            </div>
+            <div class="form-check form-control ml-3">
+                <input type="radio" id="unlimited" name="multi" [(ngModel)]="rating" value="unlimited" class="form-check-input">
+                <label for="unlimited" class="form-check-label">غير محدود</label>
+            </div>
+            <div class="form-check form-control ml-3">
+                <input type="radio" id="limited" name="rating" [(ngModel)]="rating" value="limited" class="form-check-input"  (change)="onRatingChange()">
+                <label for="limited" class="form-check-label">محدود</label>
+            </div>
+        </div>
+        <div *ngIf="showLimitInput" class="form-group mt-3">
+            <label for="limitCount">العدد</label>
+            <input type="number" id="limitCount" name="limitCount" [(ngModel)]="limitCount" class="form-control">
+        </div>
+      </div>
+      <div >
+        <label>نوع الاسئلة</label>
+        <div class="form-check form-control">
+            <input type="radio" id="s" name="rating" [(ngModel)]="rating" value="single" class="form-check-input " (change)="onRatingChange()">
+            <label for="s" class="form-check-label">فردي</label>
+          </div>
+          <div class="form-check form-control">
+            <input type="radio" id="multiple" name="rating" [(ngModel)]="rating" value="multiple" class="form-check-input" (change)="onRatingChange()">
+            <label for="multiple" class="form-check-label">متعدد</label>
+          </div>      </div>
+
+    
+    <!-- Single Question Input -->
+    <div *ngIf="rating === 'single'" class="form-group">
+        <label>Single Question</label>
+        <input type="text" name="singleQuestion" [(ngModel)]="singleQuestion" class="form-control">
+      </div>
+  
+      <!-- Multiple Questions Input -->
+      <div *ngIf="rating === 'multiple'">
+        <div class="form-group" *ngFor="let question of multipleQuestions; let i = index">
+          <label>Question {{ i + 1 }}</label>
+          <input type="text" name="multipleQuestion{{ i }}" [(ngModel)]="multipleQuestions[i]" class="form-control">
+        </div>
+        <button type="button" class="btn btn-primary" (click)="addQuestion()">Add Question</button>
+      </div>
+  
+  
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+
+    <div *ngIf="showQRCode" class="mt-4">
+        <h3>QR Code</h3>
+        <qrcode [qrdata]="qrCodeValue!" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+
+      </div>
+  </div>
+  

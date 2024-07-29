@@ -1,0 +1,56 @@
+.mainview {
+  background: #edf0f7 !important;
+}
+.itemimg {
+  padding: 25px;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.jss29 {
+  width: 100%;
+  border: 1px dashed #c4c4c4;
+  display: block;
+  padding: 30px;
+  height: 150px;
+  background: rgb(255, 255, 255);
+  text-align: center;
+  border-radius: 4px;
+}
+.jss29 svg {
+  color: rgb(240, 240, 240);
+  font-size: 64px;
+  width: 40px;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+.MuiTypography-body1 {
+  font-size: 14px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+.MuiTypography-caption {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 0.75rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.66;
+  letter-spacing: 0.03333em;
+}
+* {
+  font-family: "koken";
+}
+
+::ng-deep {
+  .p-calendar,
+  .p-dropdown,
+  .p-inputnumber {
+    width: 100%;
+  }
+}
+
+img {
+  width: 200px;
+}

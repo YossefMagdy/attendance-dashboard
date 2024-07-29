@@ -1,0 +1,110 @@
+.ant-select-selection__placeholder {
+    text-align: right !important;
+}
+
+.ant-calendar-picker{
+    display: block !important;
+    width: 100% !important;
+}
+
+.ant-calendar-picker-input.ant-input{
+    text-align: right;
+    text-indent: 20px;
+    direction: rtl;
+}
+
+.ant-select{
+    width: 100%;
+}
+
+.ant-select-dropdown-menu-item,
+.form-item-label, .ant-form-item-label{
+    text-align: right !important;
+}
+
+.ant-col-sm-1, .ant-col-sm-10, .ant-col-sm-11, .ant-col-sm-12, .ant-col-sm-13, 
+.ant-col-sm-14, .ant-col-sm-15, .ant-col-sm-16, .ant-col-sm-17, .ant-col-sm-18, 
+.ant-col-sm-19, .ant-col-sm-2, .ant-col-sm-20, .ant-col-sm-21, .ant-col-sm-22, 
+.ant-col-sm-23, .ant-col-sm-24, .ant-col-sm-3, .ant-col-sm-4, .ant-col-sm-5, .ant-col-sm-6, 
+.ant-col-sm-7, .ant-col-sm-8, .ant-col-sm-9{
+    float: right;
+}
+
+.ant-form-item-label>label::after{
+    margin: 0 0px 0 2px;
+}
+
+.ant-collapse{
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+.ant-collapse-content{
+    background-color: transparent;
+}
+
+.ant-collapse-header div{
+    position: absolute;
+    right: 0;
+}
+
+.ant-collapse>.ant-collapse-item>.ant-collapse-header .ant-collapse-arrow{
+    vertical-align: 1px;
+}
+
+.ant-carousel .slick-list{
+    height: 300px !important;
+}
+
+.ant-carousel .slick-dots li.slick-active{
+    background-color: rgb(56, 102, 223);
+    border: 1px solid rgb(56, 102, 223);
+}
+
+.ant-carousel .slick-dots li.slick-active button,
+.ant-carousel .slick-dots li.slick button{
+    background-color: transparent;
+}
+
+.ant-carousel .slick-dots li{
+    width: 8px !important;
+    height: 8px !important;
+    border: 1px solid rgb(178, 184, 202);
+    border-radius: 50%;
+}
+
+.ant-tabs-tab{
+    padding: 10px;
+    position: relative;
+    font-size: 1.3em;
+    line-height: 1.3em;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    text-transform: uppercase;
+    transition: opacity 0.2s ease-in-out 0s;
+    opacity: 1;    
+    user-select: none;
+}
+
+.ant-tabs-tab-active{
+    color: rgb(56, 102, 223);
+    border-bottom: 4px solid rgb(56, 102, 223);
+}
+
+.ant-tabs-content-holder{
+    /* margin-top: 40px; */
+}
+
+.ant-rate-star-full .ant-rate-star-second, .ant-rate-star-half .ant-rate-star-first{
+    color: rgb(242, 153, 74);
+}
+
+.ant-progress-text{
+    display: none;
+}
+
+.ant-progress-bg, .ant-progress-success-bg{
+    background-color: rgb(242, 153, 74);
+}

@@ -1,0 +1,256 @@
+<div class="row font">
+    <div class="col-12 text-center">
+      <h2 class="text-center">تقرير الشركة</h2>
+    </div>
+  
+   
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-body" style="border-bottom: 5px solid #ffc107;">
+          <div>
+            <div style="text-align: left;">حملات التقييم</div>
+            <div class="m-r-10">
+              <span class="btn btn-circle btn-warning">
+                <i class="fa fa-users" aria-hidden="true"></i>
+              </span>
+            </div>
+            <div class="ml-auto">
+              <h2 class="m-b-0 font-light">
+                {{usercount}}
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-body" style="border-bottom: 5px solid #dc3545;">
+          <div>
+            <div style="text-align: left;">المنتجات</div>
+            <div class="m-r-10">
+              <span class="btn btn-circle btn-danger">
+                <i class="fa fa-user-secret" aria-hidden="true"></i>
+              </span>
+            </div>
+            <div class="ml-auto">
+              <h2 class="m-b-0 font-light">
+                {{leadercount}}
+
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-body" style="border-bottom: 5px solid #ffc107;">
+          <div>
+            <div style="text-align: left;">التقييمات</div>
+            <div class="m-r-10">
+              <span class="btn btn-circle btn-warning">
+                <i class="fa fa-address-card-o" aria-hidden="true"></i>
+              </span>
+            </div>
+            <div class="ml-auto">
+              <h2 class="m-b-0 font-light">
+                {{totalSalary}}
+
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+      <div class="card">
+        <div class="card-body" style="border-bottom: 5px solid #0d6efd;">
+          <div>
+            <div style="text-align: left;">متوسط جميع التقييمات</div>
+            <div class="m-r-10">
+              <span class="btn btn-circle btn-primary">
+                <i class="fa fa-users" aria-hidden="true"></i>
+              </span>
+            </div>
+            <div class="ml-auto">
+              <h2 class="m-b-0 font-light">
+                {{Branchcount}}
+
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4">
+        <canvasjs-chart [options]="chartOptions" [styles]="{height:'360px'}"></canvasjs-chart>    
+      </div>
+      <div class="col-lg-8">
+        <canvasjs-chart [options]="chartOptions2" [styles]="{height:'360px'}"></canvasjs-chart>    
+      </div>
+      
+
+
+
+    </div>
+  </div> 
+ <!--<div class="col-lg-6">
+        <canvas baseChart height="400"
+        style="width: 100%;"
+          [type]="'line'"
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend">
+        </canvas>
+      </div> -->
+    
+
+      <!-- <div>
+        <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>    
+    </div>   -->
+      
+    <!-- <h3 style="text-align: center; margin-top: 50px;">حضور و غياب الموظفين</h3> -->
+
+
+
+    <!-- <div class="example-header">
+      <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+    
+    <div class="example-container mat-elevation-z8">
+    
+      <mat-table [dataSource]="dataSource" matSort>
+    
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="progress">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Progress </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.progress}}% </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="color">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
+          <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div> -->
+   
+    
+
+
+<div 
+class="table-responsive card custom-br custom-shadow card custom-br custom-shadow"
+>
+
+
+
+
+
+</div>
+
+
+ <!-- <div class="container-fluid" style="background-color: #616698;">
+  <div class="row">
+
+
+    <div class="col 6 sheetOne">
+
+      <div class="p-inputgroup" style="color: #616698; font-weight: bold;">
+        <p>ارسل طلبك لنا</p>
+      </div>
+
+      <div class="p-inputgroup">
+        <input pInputText placeholder="الاسم" />
+      </div>
+      
+      <div class="p-inputgroup">
+        <input type="text" pInputText placeholder="البريد الالكترونى" />
+      </div>
+      
+      <div class="p-inputgroup">
+        <input type="number" pInputText placeholder="رقم الجوال" />
+      </div>
+
+      <div class="p-inputgroup">
+        <textarea rows="7" cols="30" pInputTextarea  pInputText placeholder="الطلب" ></textarea>
+      </div>
+
+      <div class="p-inputgroup" style="display: flex; justify-content: center;">
+        <p-button label="ارسال"></p-button>
+      </div>
+
+    </div>
+
+    <div class="col-6 sheetTwo">
+      <p-image src="../../../../assets/images/Group 8.png" alt="Image" width="300"></p-image>
+    </div>
+
+    
+
+  </div>
+</div>  -->
+
+
+ <!-- <div class="container-fluid contactUs">
+  <div class="row">
+
+<div class="card mb-3 shadow-4 cards">
+  <div class="row g-0">
+
+    <div class="col-md-8 col-sm-12 cardCol">
+      <div class="p-inputgroup cardP">
+        <p>ارسل طلبك لنا</p>
+      </div>
+
+      <div class="col-md-12 col-sm-12 p-inputgroup">
+        <input pInputText placeholder="الاسم" />
+      </div>
+      
+      <div class="col-md-12 col-sm-12 p-inputgroup">
+        <input type="text" pInputText placeholder="البريد الالكترونى" />
+      </div>
+      
+      <div class="col-md-12 col-sm-12 p-inputgroup">
+        <input type="number" pInputText placeholder="رقم الجوال" />
+      </div>
+
+      <div class="col-md-12 col-sm-12 p-inputgroup">
+        <textarea rows="5" cols="30" pInputTextarea  pInputText placeholder="الطلب" ></textarea>
+      </div>
+
+      <div class="p-inputgroup cardBottun">
+        <p-button label="ارسال"></p-button>
+      </div>
+
+    </div>
+
+    <div class="col-md-4 col-sm-12 cardImage">
+      <img src="../../../../assets/images/Group 8.png" alt="Image" width="250" class="img-fluid rounded-start" alt="...">
+    </div>
+    
+  </div>
+</div>
+
+</div>
+</div> -->

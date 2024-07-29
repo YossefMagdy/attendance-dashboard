@@ -1,0 +1,43 @@
+<!-- header -->
+<div>
+    <div [themeLoad]="['theme1', 'header-themes' ]"></div>
+  </div>
+  
+  
+  
+  
+  <div class="container-fluid" style="margin-top: 25px;
+  " >
+      <div class="row">
+  
+          <div   class="col-md-2 d-flex justify-content-center " id="product_list">
+              <app-sidebar/>
+          </div>
+  
+          <div  class="col-md-10 mb-4">
+            <ngx-ui-loader
+  
+            loaderId="loader"
+            fgsColor="#4798e8"
+            pbColor="#4798e8"
+            fgsPosition="center-center"
+            fgsType="three-strings"
+            overlayColor="rgba(40, 40, 40, 0.8)"
+            pbDirection="rtl"
+            bgsColor= "#00ef2c"
+            bgsPosition= "center-center"
+            bgsType= "three-strings"
+            [fgsSize]="100"
+            [pbThickness]="4"
+            [hasProgressBar]="true"
+            [bgsOpacity]= 0.5
+            overlayBorderRadius="8px"
+            >
+          </ngx-ui-loader>
+            <router-outlet></router-outlet>
+  
+              </div>
+              </div>
+              </div>
+              <p-toast [position]="lang == 'en' ? 'top-right' : 'top-left'"></p-toast>
+  

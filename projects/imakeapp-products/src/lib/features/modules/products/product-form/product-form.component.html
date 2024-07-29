@@ -1,0 +1,236 @@
+<form [formGroup]="form" style="width: 100%" autocomplete="off">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group mb-3">
+        <div class="float-left">
+          <label for="photo"> الصورة </label>
+        </div>
+        <div class="input-group-lg">
+          <label
+            style="color: #fff"
+            for="photo"
+            class="btn btn-block fs-5 w-100"
+            matRipple
+          >
+            <i class="mdi mdi-upload"></i>
+            اختر الصورة
+            <input
+              type="file"
+              class="form-control-file d-none"
+              id="photo"
+              [(ngModel)]="imageInput"
+              [ngModelOptions]="{ standalone: true }"
+              name="photo"
+              (change)="getImageName($event)"
+            />
+            <div class="w-100 m-auto" *ngIf="ImgSrc">
+              <img [src]="ImgSrc" />
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="col-12">إسم المنتج</h1>
+
+    <div class="col-md-6">
+      <div class="form-group mb-4">
+        <label for="name"> الاسم </label>
+        <div class="input-group-lg">
+          <input
+            class="form-control"
+            pInputText
+            type="text"
+            formControlName="name_ar"
+            id="name"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group mb-4">
+        <label for="name"> الاسم باللغة الإنجليزية</label>
+        <div class="input-group-lg">
+          <input
+            class="form-control"
+            pInputText
+            type="text"
+            formControlName="name_en"
+            id="name"
+          />
+        </div>
+      </div>
+    </div>
+
+    <h1 class="col-12">وصف المنتج</h1>
+
+    <div class="col-md-6">
+      <div class="form-group mb-4">
+        <label for="name"> وصف المنتج </label>
+
+        <p-editor
+          formControlName="description_ar"
+          [style]="{ height: '150px' }"
+        ></p-editor>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group mb-4">
+        <label for="name"> وصف المنتج باللغة الإنجليزية</label>
+
+        <p-editor
+          formControlName="description_en"
+          [style]="{ height: '150px' }"
+        ></p-editor>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group mb-4">
+        <label for="name"> وصف قصير للمنتج</label>
+        <div class="input-group-lg">
+          <textarea
+            rows="5"
+            class="w-100"
+            pInputTextarea
+            formControlName="short_description_ar"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group mb-4">
+        <label for="name"> وصف قصير للمنتج بالإنجليزية</label>
+        <div class="input-group-lg">
+          <textarea
+            rows="5"
+            class="w-100"
+            pInputTextarea
+            formControlName="short_description_en"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="col-12">بيانات أساسية للمنتج</h1>
+
+    <div class="col-md-6">
+      <label for="available_start_date"> تاريخ بداية عرض المنتج</label>
+      <p-calendar
+        id="available_start_date"
+        formControlName="available_start_date"
+      ></p-calendar>
+    </div>
+
+    <div class="col-md-6">
+      <label for="available_end_date"> تاريخ نهاية عرض المنتج</label>
+      <p-calendar
+        id="available_end_date"
+        formControlName="available_end_date"
+      ></p-calendar>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group mb-4">
+        <label for="name"> كود SKU للمنتج</label>
+        <div class="input-group-lg">
+          <input
+            class="form-control"
+            pInputText
+            type="text"
+            formControlName="sku"
+            id="name"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group mb-4 d-flex flex-column w-100">
+        <label for="price"> سعر المنتج</label>
+        <p-inputNumber
+          id="price"
+          formControlName="price"
+          mode="currency"
+          currency="EGP"
+        ></p-inputNumber>
+      </div>
+    </div>
+
+    <div class="col-md-6 mt-3">
+      <p-dropdown
+        class="w-100"
+        placeholder="الماركة"
+        [options]="productFormViewState.brands"
+        optionLabel="name_ar"
+        optionValue="id"
+        [showClear]="true"
+        [filter]="true"
+        filterBy="name_ar"
+        formControlName="brand_id"
+        [autoDisplayFirst]="false"
+      >
+        <ng-template let-item pTemplate="item">
+          <div>{{ item["name_ar"] }}</div>
+        </ng-template>
+      </p-dropdown>
+    </div>
+    <div class="col-md-6 mt-3">
+      <p-dropdown
+        class="w-100"
+        placeholder="الشارات"
+        [options]="productFormViewState.badges"
+        optionLabel="name_ar"
+        optionValue="id"
+        [showClear]="true"
+        [filter]="true"
+        filterBy="badge_id"
+        formControlName="badge_id"
+        [autoDisplayFirst]="false"
+      >
+        <ng-template let-item pTemplate="item">
+          <div>{{ item["name_ar"] }}</div>
+        </ng-template>
+      </p-dropdown>
+    </div>
+    <h1 class="col-12">بيانات إضافية للمنتج</h1>
+
+    <div class="d-flex flex-column gap-2 justify-content-between mb-3">
+      <div class="d-flex gap-2 flex-row-reverse justify-content-end">
+        <label for="new">إضافة في المنتجات الجديدة</label>
+        <p-checkbox
+          [binary]="true"
+          [trueValue]="1"
+          [falseValue]="0"
+          inputId="new"
+          formControlName="mark_as_new"
+        ></p-checkbox>
+      </div>
+      <div class="d-flex gap-2 flex-row-reverse justify-content-end">
+        <label for="visibile">ظاهر</label>
+        <p-checkbox
+          [binary]="true"
+          [trueValue]="1"
+          [falseValue]="0"
+          inputId="visible"
+          formControlName="visible"
+        ></p-checkbox>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <button
+        pButton
+        class="btn btn-block"
+        [class.btn-info]="!id"
+        [class.btn-success]="id"
+        [disabled]="!this.form.valid"
+        (click)="id ? edit() : add()"
+      >
+        <i nz-icon nzType="loading" nzTheme="outline" *ngIf="loading"></i>
+        {{ !id ? "اضافة" : "تعديل" }}
+      </button>
+    </div>
+  </div>
+</form>

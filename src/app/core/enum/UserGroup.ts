@@ -1,0 +1,1 @@
+export enum UserGroup {User= "65259560ad58c205abcaf805",company = "652b13a399bd7c1b529fef02",admin="652b13ae99bd7c1b529fef05"}
