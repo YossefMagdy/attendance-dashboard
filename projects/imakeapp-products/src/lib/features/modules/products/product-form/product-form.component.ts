@@ -49,7 +49,6 @@ export class ProductFormComponent {
     this.ProductsFacade.GetProductFormDropdowns();
     this.ProductsFacade.productFormViewStateSelector$.subscribe({
       next: (data) => {
-        console.log(data);
         this.productFormViewState = data;
       },
     });

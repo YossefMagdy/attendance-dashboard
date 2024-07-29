@@ -4,25 +4,20 @@ export class Validation_Directive {
     validate;
     mutate;
     input() {
-        console.log("fieed");
         this.validate_form_control();
     }
     focusout() {
-        console.log("fieed");
         this.validate_form_control();
     }
     onTouchStart() {
-        console.log("touchstart");
     }
     ontouchend() {
-        console.log("touchstart");
     }
     validate_form_control() {
         let fg = this.validate.form_group;
         let fc = this.validate.control_name;
         let validation = fg.controls[fc].invalid && (fg.controls[fc].dirty || fg.controls[fc].touched);
         ;
-        console.log(this.mutate);
         if (validation) {
             this.mutate.style.backgroundColor = 'red';
             this.mutate.style['text-align'] = 'start';

@@ -117,7 +117,6 @@ export class HeaderEffect
 
                 this.service.get_naviagtion_menu(action.param).subscribe(
                   (response: any)=>{
-                    console.log(response)
                     if (JSON.parse(this.cookie_s.get("usergroup")) == "652b13a399bd7c1b529fef02") {
                       this.store.dispatch(new GET_NAV_MENU_LOADED_ACTION([{
                         title: "حملات التقييم",

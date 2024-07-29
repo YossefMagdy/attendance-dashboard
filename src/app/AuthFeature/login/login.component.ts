@@ -64,19 +64,16 @@ export class LoginComponent {
 
 
           this.data = res;
-        //  console.log( JSON.stringify(res.data.user[0].company))
             if (res.data.user[0].userGroup == UserGroup.company) {
 //               const dateString1 = '2022-01-01';
 // const dateString2 = '2023-01-01';
 
 const date1 = new Date(Date.parse(res.data.user[0].companies[0].expire_date));
 const date2 = new Date();
-console.log(date2)
-console.log(date1)
+
 
 // Compare dates
 if (date1 > date2) {
-  console.log('date1 is greater than date2');
           this.cookie_s?.set("company", JSON.stringify(res.data.user[0].companies.length > 0 ? res.data.user[0].companies[0]._id : 0), undefined, '/');
               this.cookie_s?.set("token", JSON.stringify(res.data.token), undefined, '/');
               this.cookie_s?.set("usergroup", JSON.stringify(res.data.user[0].userGroup), undefined, '/');
@@ -85,7 +82,6 @@ if (date1 > date2) {
             } else if (date1 <= date2) {
               this.message.error("من فضلك قم بتجديد الاشتراك");
 
-              console.log('date1 is less than date2');
             } 
                 
             }else if (res.data.user[0].userGroup == UserGroup.admin){
@@ -111,7 +107,6 @@ if (date1 > date2) {
         }
       },
       (err) => {
-        console.log(err)
         this.message.error("اسم المستخدم او كلمة المرور خاطئة");
         this.loader = false;
       }

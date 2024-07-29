@@ -23,7 +23,6 @@ export class ExcelProcessor {
 //     this.groupPhotosBySKU(photos);
 //      this.groupCategoriesBySKU(categories);
 //     for (const product of this.ExcelData!) {
-//       console.log(product)
 // if (product.id) {
 //   this.EditExcel(product)
 
@@ -148,11 +147,9 @@ EditExcel(product:ProductExcel){
   }
 
   private addCategoriesToProducts(product: ProductExcel) {
-    console.log(this.categoryBySKU[product.sku])
     if (this.categoryBySKU[product.sku]) {
       product.category = this.categoryBySKU[product.sku!];
     }
-console.log(product.category)
   }
   convertAttributesToObjectArray(inputObj: any): AttributesOption {
 
@@ -168,7 +165,6 @@ console.log(product.category)
       attribute: NewAttr,
 
     };
-    console.log(attributeOptions)
     return attributeOptions;
   }
 
@@ -189,7 +185,6 @@ console.log(product.category)
   //     attribute: NewAttr,
 
   //   }));
-  //   console.log(attributeOptions)
   //   return attributeOptions;
   // }
   convertSpecificationToObjectArray(Specs: any): SpecificationsOption {
@@ -205,7 +200,6 @@ console.log(product.category)
       name_en: options_name_en.toString() || "",
       specification: NewSpecs,
     };
-    console.log(Specs)
     return SpecsOptions;
   }
 
@@ -225,7 +219,6 @@ console.log(product.category)
       name_en: category_name_en?.toString() || "",
       sub_categories: SuBArray
     }
-    console.log(CatArray)
     return CatArray;
   }
 }

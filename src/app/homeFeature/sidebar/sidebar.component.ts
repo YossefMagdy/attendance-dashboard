@@ -28,7 +28,6 @@ this.listen_to_data()
       (categories: any)=>{
         if ( !categories?.length ) return;
         // save categories
-        console.log(categories)
         this.categories = JSON.parse(JSON.stringify(categories));
 
 

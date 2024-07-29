@@ -22,14 +22,12 @@ export class LanguageService {
     async request_site_languages() {
         return await new Promise(async (resolve, reject) => {
             let active_lang = localStorage.getItem('active_lang');
-            console.log(active_lang);
             const languages = await this.http.get(`${environment.ApiEndPoint2}/lang/langs`).toPromise();
             // save languages
             this._site_language = {
                 ...this._site_language,
                 languages: languages
             };
-            console.log(this._site_language);
             // save active lang
             if (active_lang != undefined) {
                 this.set_active_language(this._site_language.active_language);
@@ -46,7 +44,6 @@ export class LanguageService {
                 ...this._site_language,
                 language_data: langs
             };
-            console.log(this._site_language);
             this._site_language_Bav.next(this._site_language);
             resolve(this._site_language);
             // get and save languages data based on active language

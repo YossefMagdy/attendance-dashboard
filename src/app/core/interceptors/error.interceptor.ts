@@ -25,7 +25,6 @@ export class ErrorInterceptor implements HttpInterceptor {
         if (error instanceof HttpErrorResponse) {
           const applicationError = error.headers.get("Application-Error");
           if (applicationError) {
-            console.log("applicationError");
             return throwError(applicationError);
           }
           switch (error.status) {
@@ -38,16 +37,13 @@ export class ErrorInterceptor implements HttpInterceptor {
               this.headerFacades?.ShowSignInModal()
               break;
             case 500:
-              console.log(error)
               this.primeMessage.add({severity:'error', summary:'Error', detail:error.error.message});
 
               break;
               case 400:
-                console.log(error)
                 this.primeMessage.add({severity:'error', summary:'Error', detail:error.error.message});
   break;
             default:
-              console.log("back error : ", error.message);
               break;
           }
         }

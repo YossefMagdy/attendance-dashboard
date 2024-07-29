@@ -70,7 +70,6 @@ export function HeaderReducer (state = getIntialState(), action: ActionsUnion) {
     };
 
     case update_cart_display_status:
-      console.log(action.data)
     return {...state,cart_display_status:action.data};
 
     case set_active_location:
@@ -131,7 +130,6 @@ export function HeaderReducer (state = getIntialState(), action: ActionsUnion) {
     case GET_NAV_MENU_LOADED:
 const data:any = action.data
     const items = data?.map((item:NavMenuModel) => {
-      console.log(item.sub!.length)
 
       if(item.sub!.length || 0 > 0 ){
         return {label: item.title,
@@ -144,7 +142,6 @@ const data:any = action.data
           }
         }
     });
-console.log(items)
     return {
       ...state,
       naviagation_items:items
@@ -172,7 +169,6 @@ return {...state,
 
 }
 const convertSubMenu = (submenus: any) => {
-  // console.log(submenus)
   return submenus.map((item:any) =>
     {
       if(item.submenu?.length || 0 > 0 ){

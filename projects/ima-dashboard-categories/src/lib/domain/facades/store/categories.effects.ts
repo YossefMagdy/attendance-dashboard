@@ -33,7 +33,6 @@ export class CategoriesEffects
             mergeMap(async action  => {
                   this.service.getCategoriesDropdown().subscribe(
                     (response: any)=>{
-                      console.log(response)
                 this.store.dispatch(new AllCategoriesLoadedAction(response.data.categories))
               },
               (err: any)=>{
@@ -56,7 +55,6 @@ getAllSubCategories$ = createEffect(
           ofType(getAllSubCategories),
 
           mergeMap(async action  => {
-            console.log(action)
                 this.service.getSubCategoriesDropdown().subscribe(
                   (response: any)=>{
 

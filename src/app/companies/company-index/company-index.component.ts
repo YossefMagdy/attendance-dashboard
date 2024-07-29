@@ -30,7 +30,6 @@ export class CompanyIndexComponent {
 
   async get() {
     const data: any =  this.service.getData().subscribe((data:any)=>{
-      console.log(data)
       this.data = data.data.company;
     });
  

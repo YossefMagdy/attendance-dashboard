@@ -71,7 +71,6 @@ export class ProductsEffects {
             badges: this.badgesService.getForDropdown(),
           }).subscribe({
             next: (response: any) => {
-              console.log(response);
 
               this.store.dispatch(
                 new GetProductFormDropdownsLoaded({
@@ -224,7 +223,6 @@ export class ProductsEffects {
         tap((action: any) => {
           this.service.GetProductForExport().subscribe(
             (response: any) => {
-              console.log(response);
               this.store.dispatch(
                 new LoadProductForExcelAction(response.data.products)
               );

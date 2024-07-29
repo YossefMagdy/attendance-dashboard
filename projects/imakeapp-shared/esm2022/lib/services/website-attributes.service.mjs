@@ -35,7 +35,6 @@ export class WebsiteAttributesService {
         localStorage.setItem('site_attributes', JSON.stringify(new_site_attributes));
     }
     get_site_attributes() {
-        console.log(this._site_attributes);
         return this._site_attributes;
     }
     get_site_attributes_storage() {

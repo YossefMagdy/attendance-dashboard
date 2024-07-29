@@ -25,7 +25,6 @@ export class GoogleAnalyticsService {
         });
     }
     pageView(params) {
-        console.log(params, 'params');
         if (typeof gtag !== 'undefined') {
             gtag('event', 'page_view', params);
         }
@@ -50,7 +49,6 @@ export class GoogleAnalyticsService {
                     },
                 ],
             };
-            console.log(addToCartParams);
             gtag('event', 'remove_from_cart', addToCartParams);
         }
     }

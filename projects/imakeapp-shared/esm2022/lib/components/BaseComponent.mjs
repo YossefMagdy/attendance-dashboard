@@ -34,7 +34,6 @@ export class BaseComponent {
     ngOnDestroy() {
         if (this.subscriptions.length > 0) {
             this.subscriptions?.forEach((subscription) => {
-                console.log(subscription);
                 if (subscription) {
                     subscription.unsubscribe();
                 }

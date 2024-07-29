@@ -63,13 +63,11 @@ class BaseService {
         this.subscriptions?.push(this.language_s.get_site_languages_code().subscribe((response) => {
             if (response != null) {
                 this.lang = response;
-                console.log(this.lang);
             }
         }));
         //user
     }
     ngOnDestroy() {
-        console.log("in destroy");
         if (this.subscriptions) {
             this.subscriptions?.forEach((subscription) => {
                 if (subscription) {
@@ -135,7 +133,6 @@ class WebsiteAttributesService {
         localStorage.setItem('site_attributes', JSON.stringify(new_site_attributes));
     }
     get_site_attributes() {
-        console.log(this._site_attributes);
         return this._site_attributes;
     }
     get_site_attributes_storage() {
@@ -209,14 +206,12 @@ class LanguageService {
     async request_site_languages() {
         return await new Promise(async (resolve, reject) => {
             let active_lang = localStorage.getItem('active_lang');
-            console.log(active_lang);
             const languages = await this.http.get(`${environment.ApiEndPoint2}/lang/langs`).toPromise();
             // save languages
             this._site_language = {
                 ...this._site_language,
                 languages: languages
             };
-            console.log(this._site_language);
             // save active lang
             if (active_lang != undefined) {
                 this.set_active_language(this._site_language.active_language);
@@ -233,7 +228,6 @@ class LanguageService {
                 ...this._site_language,
                 language_data: langs
             };
-            console.log(this._site_language);
             this._site_language_Bav.next(this._site_language);
             resolve(this._site_language);
             // get and save languages data based on active language
@@ -314,7 +308,6 @@ class LoadPixelAdService {
     constructor() { }
     InitTiktokPixel(TiktokPixelId) {
         const node = document.createElement('script');
-        // console.log(TiktokPixel);
         const script = `
     !function (w, d, t) {
       w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
@@ -395,7 +388,6 @@ class GoogleAnalyticsService {
         });
     }
     pageView(params) {
-        console.log(params, 'params');
         if (typeof gtag !== 'undefined') {
             gtag('event', 'page_view', params);
         }
@@ -420,7 +412,6 @@ class GoogleAnalyticsService {
                     },
                 ],
             };
-            console.log(addToCartParams);
             gtag('event', 'remove_from_cart', addToCartParams);
         }
     }
@@ -976,7 +967,6 @@ class BaseComponent {
     ngOnDestroy() {
         if (this.subscriptions.length > 0) {
             this.subscriptions?.forEach((subscription) => {
-                console.log(subscription);
                 if (subscription) {
                     subscription.unsubscribe();
                 }
@@ -1056,25 +1046,20 @@ class Validation_Directive {
     validate;
     mutate;
     input() {
-        console.log("fieed");
         this.validate_form_control();
     }
     focusout() {
-        console.log("fieed");
         this.validate_form_control();
     }
     onTouchStart() {
-        console.log("touchstart");
     }
     ontouchend() {
-        console.log("touchstart");
     }
     validate_form_control() {
         let fg = this.validate.form_group;
         let fc = this.validate.control_name;
         let validation = fg.controls[fc].invalid && (fg.controls[fc].dirty || fg.controls[fc].touched);
         ;
-        console.log(this.mutate);
         if (validation) {
             this.mutate.style.backgroundColor = 'red';
             this.mutate.style['text-align'] = 'start';
@@ -1181,7 +1166,6 @@ class GenericFilterComponent {
     }
     ngOnInit() {
         this.outputObj = new OutputData(this.inputs);
-        console.log(this.outputObj);
         this.handleQueryParams();
         if (this.filterOnStart) {
             this.emitFilterData("");

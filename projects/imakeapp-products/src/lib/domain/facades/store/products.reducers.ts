@@ -75,7 +75,6 @@ export function Products_reducer (state = getIntialState(), action: any)
     };
 
     case ProductForExportLoaded:
-      console.log(action)
     return {
       ...state,
       ProductsForExcel: action.data

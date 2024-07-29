@@ -12,13 +12,11 @@ export class BaseService {
         this.subscriptions?.push(this.language_s.get_site_languages_code().subscribe((response) => {
             if (response != null) {
                 this.lang = response;
-                console.log(this.lang);
             }
         }));
         //user
     }
     ngOnDestroy() {
-        console.log("in destroy");
         if (this.subscriptions) {
             this.subscriptions?.forEach((subscription) => {
                 if (subscription) {

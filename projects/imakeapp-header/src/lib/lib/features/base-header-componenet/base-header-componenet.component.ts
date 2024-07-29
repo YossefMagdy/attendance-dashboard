@@ -86,7 +86,6 @@ export class BaseHeaderComponenetComponent  extends BaseComponent implements OnI
  override ngOnInit(): void
  {
 super.ngOnInit()
-console.log("base")
    this.init();
 
    this.get_langaues();
@@ -150,7 +149,6 @@ console.log("base")
 
  showDialog(type: string)
  {
-console.log("true")
    if ( type == 'sign-in' )
    {
      // set mode to: sign in
@@ -197,7 +195,6 @@ hideSearchBar() {
 
 display_cart(state: boolean)
 {
-  console.log(state)
   this.store?.dispatch(new UPDATE_CART_DISPLAY_STATUS_ACTION(true));
 }
 
@@ -237,7 +234,6 @@ display_cart(state: boolean)
  search_result_clicked(result: any, search_input: any)
  {
 
-   console.log('♨️♨️♨️', result )
 
    // empty search field
    search_input.value = '';
@@ -309,7 +305,6 @@ display_cart(state: boolean)
        // check if response is object NOT error message (precation for bad back-end)
        if ( typeof response != 'string' )
        {
-console.log(response)
          this.cookie_s?.set("user", JSON.stringify(response), undefined, '/');
          this.store?.dispatch( new SIGN_IN_ACTION(response) );
 
@@ -508,7 +503,6 @@ console.log(response)
 
   navigate_top() {
     const modalContentElement = this.modal?.nativeElement;
-    console.log(modalContentElement)
     if (modalContentElement) {
       modalContentElement.scrollIntoView({ top: 0, behavior: 'smooth' });
     }
@@ -569,13 +563,11 @@ console.log(response)
 
        },
        (err: any)=>{
-console.log(err)
          // get error reasons
          for (const field in err.data) {
           if (err.data.hasOwnProperty(field)) {
             const errors = err.data[field];
             for (const error of errors) {
-              console.log(`${field}: ${error.message}`);
 
               this.message_s?.add({
                 severity: 'error',

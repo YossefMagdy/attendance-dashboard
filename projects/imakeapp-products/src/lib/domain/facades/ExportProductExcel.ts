@@ -156,8 +156,7 @@ OverTimeHours += diff
       
     }
   }
-  console.log(OverTimeHours)
-  console.log(this.convertHoursToTimeString(OverTimeHours))
+
   rowData[`اجمالي الساعات الاضافية`] = OverTimeHours >= 0 ? this.convertHoursToTimeString(OverTimeHours) : '-'+this.convertHoursToTimeString(OverTimeHours*-1)
 
       return rowData;

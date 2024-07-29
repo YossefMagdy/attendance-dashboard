@@ -78,7 +78,6 @@ export class SidebarComponentComponent implements OnInit {
       (categories: any)=>{
         if ( !categories?.length ) return;
         // save categories
-        console.log(categories)
        // this.categories = JSON.parse(JSON.stringify(categories));
 
 

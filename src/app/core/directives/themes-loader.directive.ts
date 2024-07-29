@@ -19,7 +19,6 @@ export class ThemeLoaderDirective
       // if 'theme_name' empty
       if ( !options[0] ) return;
 
-      console.log('🌻 theme loader: 🌻\n', 'theme name: ', options[0], '\n', 'library name: ', options[1]);
 
       switch(options[1])
       {

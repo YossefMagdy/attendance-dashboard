@@ -30,7 +30,6 @@ export class GenericFilterComponent {
     }
     ngOnInit() {
         this.outputObj = new OutputData(this.inputs);
-        console.log(this.outputObj);
         this.handleQueryParams();
         if (this.filterOnStart) {
             this.emitFilterData("");

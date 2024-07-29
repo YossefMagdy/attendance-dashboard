@@ -42,14 +42,12 @@ export class CompanyFormComponent implements OnInit, OnDestroy  {
     this.getGroup();
 
     this.obj = localStorage.getItem("item");
-    console.log(this.obj)
     this.createForm();
 
     if (this.obj) {
       const dataGroup = this.form.get('data') as FormGroup;
 
       const obj = JSON.parse(this.obj);
-      console.log(obj);
       this.id = obj.id;
       dataGroup.reset(obj);
     }
@@ -58,7 +56,6 @@ export class CompanyFormComponent implements OnInit, OnDestroy  {
   createForm() {
    
     if (this.obj) {
-      console.log("edit")
       this.form = this.fb.group({
         // User-related form controls go here
         data: this.fb.group({
@@ -93,7 +90,6 @@ export class CompanyFormComponent implements OnInit, OnDestroy  {
 
             }),
           });
-          console.log("add")
       
           
         }
@@ -103,14 +99,12 @@ export class CompanyFormComponent implements OnInit, OnDestroy  {
   async getGroup() {
   this.userGroupService.get().subscribe((data:any)=>{
     this.groups = data.data.usergroups
-    console.log(this.groups)
     });
   }
 
   async add() {
     const values = this.form.getRawValue();
 
-    console.log(values)
 
     if (this.form.valid) {
       const formDataa = new FormData();

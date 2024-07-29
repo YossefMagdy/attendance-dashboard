@@ -33,7 +33,6 @@ export class CategoriesEffects
             mergeMap(async action  => {
                   this.service.getGalleryByType().subscribe(
                     (response: any)=>{
-                      console.log(response)
                 this.store.dispatch(new getGalleryLoadedAction(response.data.categories))
               },
               (err: any)=>{

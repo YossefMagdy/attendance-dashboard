@@ -229,7 +229,6 @@ export class HeaderTwoComponent extends BaseComponent implements OnInit
     this.headerFacades.navigation_menu_selector$.subscribe(
       (categories: any)=>{
         if ( !categories?.length ) return;
-console.log(this.categories)
         // save categories
         this.categories = categories;
 
@@ -283,7 +282,6 @@ console.log(this.categories)
 
   }
   public swtichToProductList(SubId:number){
-console.log(SubId)
     this.router!!.navigate(['/products/products-list'],  {
       queryParams:  {  SubCatId:  SubId},
     });

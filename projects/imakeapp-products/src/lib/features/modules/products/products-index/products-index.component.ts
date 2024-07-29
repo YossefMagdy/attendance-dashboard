@@ -63,7 +63,6 @@ export class ProductsIndexComponent extends BaseComponent implements OnInit {
   getProductsIndexViewState() {
     this.ProductFacade.productsIndexViewStateSelector$.subscribe({
       next: (data) => {
-        console.log(data)
         this.productsIndexViewState = data;
         this.productFormModalVisibility = data.productFormModalVisibility;
       },
@@ -227,7 +226,6 @@ export class ProductsIndexComponent extends BaseComponent implements OnInit {
     //   .edit({ id: data.id, [data.key]: +data.value })
     //   .subscribe({
     //     next: (response: any) => {
-    //       console.log(response);
     //       if (response.data.products.length > 0) {
     //         this.get();
     //         this.genericService.showNotification(
@@ -434,7 +432,6 @@ export class ProductsIndexComponent extends BaseComponent implements OnInit {
         header: 'تاكيد تحميل المنتجات',
         icon: 'pi pi-info-circle',
         accept: () => {
-          console.log(workBook);
           new ExcelProcessor(
             this.productsIndexViewState.ExcelData!,
             workBook,
@@ -480,7 +477,6 @@ export class ProductsIndexComponent extends BaseComponent implements OnInit {
   getProductForExcel() {
     this.ProductFacade.GetProductsForExcel();
     this.ProductFacade.ProductsForExcel_selector$.subscribe((data) => {
-      console.log(data);
       new exportExcel().exportExcel(data as any);
     });
   }

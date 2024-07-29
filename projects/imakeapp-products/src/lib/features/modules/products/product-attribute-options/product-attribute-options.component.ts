@@ -22,7 +22,6 @@ export class ProductAttributeOptionsComponent implements OnInit {
   ngOnInit(): void {}
 
   onRowEditInit(option: any, index: number) {
-    console.log(index);
 
     this.clonedOption[index] = { ...option };
     this.rowData[index] = {
