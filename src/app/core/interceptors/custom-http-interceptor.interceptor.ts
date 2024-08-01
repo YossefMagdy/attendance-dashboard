@@ -34,7 +34,7 @@ export class CustomHttpInterceptorInterceptor implements HttpInterceptor
     let user_token = '';
     let vendor_code = '';
     let vendor_id = '';
-    let companyId =  JSON.parse( this.cookie_s.get('company') || "null")  || "0"
+    let schoolId =  JSON.parse( this.cookie_s.get('school') || "null")  || "0"
     if ( this.cookie_s.get('token') )
 
     {
@@ -46,20 +46,9 @@ export class CustomHttpInterceptorInterceptor implements HttpInterceptor
     {
       user_token = '';
     }
-// if(this.cookie_s.get('user') ) {
 
-//   vendor_code = JSON.parse( this.cookie_s.get('user') ).restaurants.code;
-//   vendor_id = JSON.parse( this.cookie_s.get('user') ).restaurants.id;
-
-
-//}
     this.lang=  'ar';
 
-    // set site language
-
-
-
-    // language api does not need anything (headers)
     if (
       request.url.startsWith(`${environment.ApiEndPoint2}/lang/langs`)
     )
@@ -67,7 +56,7 @@ export class CustomHttpInterceptorInterceptor implements HttpInterceptor
 
       request = request.clone({
         headers: request.headers
-        .set('company',        JSON.parse( this.cookie_s.get('company') 
+        .set('school',        JSON.parse( this.cookie_s.get('school') 
         ))
           .set('vendor_code', vendor_code)
           .set('vendor_id',vendor_id.toString())
@@ -88,7 +77,7 @@ export class CustomHttpInterceptorInterceptor implements HttpInterceptor
           headers: request.headers
             .set('Authorization', 'Bearer ' + user_token)
             .set('lang', this.lang)
-            .set('company',    companyId)
+            .set('school',    schoolId)
             .set('vendor_code', vendor_code)
             .set('vendor_id', vendor_id.toString())
         });

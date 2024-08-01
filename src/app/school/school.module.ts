@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CompanyRoutingModule } from './company-routing.module';
-import { CompanyIndexComponent } from './company-index/company-index.component';
-import { CompanyFormComponent } from './company-form/company-form.component';
+import { SchoolRoutingModule } from './school-routing.module';
+import { SchoolIndexComponent } from './school-index/school-index.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
@@ -14,21 +13,22 @@ import { GenericService } from 'projects/image-gallaries/src/domain/services/gen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageModule } from 'primeng/image';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { SchoolFormComponent } from './school-form/school-form.component';
 
 
 @NgModule({
   declarations: [
-    CompanyIndexComponent,
-    CompanyFormComponent
+    SchoolIndexComponent,
+    SchoolFormComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    CompanyRoutingModule,
+    SchoolRoutingModule,
     NzPopconfirmModule,NzTableModule,NzSelectModule,NzDropDownModule,SharedModule,NzFormModule,ImageModule
 
   ]  ,providers: [GenericService,NzNotificationService,DynamicDialogConfig],
 
 })
-export class CompanyModule { }
+export class SchoolModule { }

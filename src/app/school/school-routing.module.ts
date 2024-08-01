@@ -1,31 +1,36 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CompanyIndexComponent } from './company-index/company-index.component';
-import { CompanyFormComponent } from './company-form/company-form.component';
+import {  SchoolIndexComponent } from './school-index/school-index.component';
+import {  SchoolFormComponent } from './school-form/school-form.component';
 
 const routes: Routes = [  {
   path: '',
   children: [
+    {
+        path:'',
+        redirectTo:'all',
+        pathMatch:'full'
+    },
       {
           path: 'all',
-          component: CompanyIndexComponent,
+          component: SchoolIndexComponent,
           data: {
-              title: 'الشركات',
+              title: 'المدارس',
           },                              
       },
       {
           path: 'add',
-          component: CompanyFormComponent,
+          component: SchoolFormComponent,
           data: {
-              title: 'اضافة الشركات',
+              title: 'اضافة مدرسه',
           }, 
                                         
       },
       {
           path: 'edit',
-          component: CompanyFormComponent ,
+          component: SchoolFormComponent ,
           data: {
-              title: 'تعديل الشركات',
+              title: 'تعديل مدرسه',
           },                              
       }            
   ]
@@ -35,4 +40,4 @@ const routes: Routes = [  {
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CompanyRoutingModule { }
+export class SchoolRoutingModule { }

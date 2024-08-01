@@ -8,29 +8,28 @@
     background-size: cover;
   "
 >
-  <div class="auth-box shadow-8 col-md-4 p-4 " style="background-color: white;    height: 50%;border-radius: 15px;">
+  <div class="auth-box shadow-8 col-lg-4 p-4 " style="background-color: white;    height: 50%;border-radius: 15px;">
     <div id="loginform" [ngClass]="{ 'd-none': recoverform }">
-      <div class="logo" style="text-align: center;">
-        <!-- <span class="db">
+      <div class="logo" >
+        
           <img
-            src="../../../assets/images/logo.png"
-            width="100px"
-            class="w-7rem"
+            src="../assets/images/logo.jpg"
+            class="w-75"
             style="border-radius: 10px; animation: flip; animation-duration: 2s"
-            alt="logo"
-          />
-        </span> -->
-        <h5
-          class="font-medium m-b-20 mt-2"
-          style="
-            font-size: 18px;
-            font-weight: 600 !important;
-            text-shadow: 0px 0px 7px black;
-            color: white;
-          "
-        >
-          تسجيل الدخول
-        </h5>
+              alt="logo"
+            />
+        
+          <!-- <h5
+            class="font-medium m-b-20 mt-2"
+            style="
+              font-size: 18px;
+              font-weight: 600 !important;
+              text-shadow: 0px 0px 7px black;
+              color: white;
+            "
+          >
+            تسجيل الدخول
+          </h5> -->
       </div>
       <!-- Form -->
       <form [formGroup]="loginForm!">

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MenuItem } from 'primeng/api';
 import { HeadersFacade } from 'projects/imakeapp-header/src/public-api';
+import { MenuItem } from 'src/app/core/Entites/categories';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,32 +11,31 @@ export class SidebarComponent {
 
 
 
-  categories: any[] = [
-   
-];
+  categories: MenuItem[] =  [
+    {
+      "label": "مدراس",
+      "icon": "fas fa-globe",
+      "items": [
+          {
+              "label": "اضافة",
+              "icon": "",
+              "routerLink": "/home/school/add"
+          },
+          {
+              "label": "عرض",
+              "icon": "",
+              "routerLink": "/home/school/all"
+          }
+      ]
+  }
+  ]
 constructor(private headerFacade:HeadersFacade){
 
-this.listen_to_data()
 
 }
 
 
-  listen_to_data()
-  {
 
-    this.headerFacade.navigation_menu_selector$.subscribe(
-      (categories: any)=>{
-        if ( !categories?.length ) return;
-        // save categories
-        this.categories = JSON.parse(JSON.stringify(categories));
-
-
-
-      }
-
-    );
-
-  }
 
 
 }

@@ -9,7 +9,7 @@ export const environment = {
 // The list of file replacements can be found in `angular.json`.
 
 
-
+ school_url:'https://madaresapp.codesroots.com/api',
   production: false,
   graphqlendpoint: `${base_url}:4000/graphql`,
   ApiEndPoint: `${base_url}:4000/api`,

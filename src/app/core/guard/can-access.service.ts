@@ -20,10 +20,10 @@ export class CanAccessGuardService implements CanActivateChild
   
   canActivateChild(route: any, state: RouterStateSnapshot) 
   {
+        console.log(route)
 
     return this.authGuard.canActivateChild(route, state).then(
       (auth) => {
-      
       if (!auth) 
       {
         return false;

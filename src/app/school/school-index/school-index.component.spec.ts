@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CompanyIndexComponent } from './company-index.component';
+import { CompanyIndexComponent } from './school-index.component';
 
 describe('UsersIndexComponent', () => {
   let component: CompanyIndexComponent;

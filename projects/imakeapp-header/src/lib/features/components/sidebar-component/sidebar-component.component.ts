@@ -17,28 +17,22 @@ export class SidebarComponentComponent implements OnInit {
   sidebarVisible1 = false
   categories: any[] = [
     {
-        "title": "شركات",
+        "title": "مدارس",
         "icon": "fas fa-globe",
         "path": "/",
-        "role": "652b13ae99bd7c1b529fef05",
         "class": "has-arrow",
-        "id": "659494c71723f692afd8afab",
         "sub": [
             {
                 "title": "اضافة",
                 "icon": "",
-                "path": "/home/companies/add",
-                "role": "652b13ae99bd7c1b529fef05",
+                "path": "/home/school/add",
                 "class": "",
-                "_id": "659494c71723f692afd8afac"
             },
             {
                 "title": "عرض",
                 "icon": "",
-                "path": "/home/companies/all",
-                "role": "652b13ae99bd7c1b529fef05",
+                "path": "/home/school/all",
                 "class": "",
-                "_id": "659494c71723f692afd8afad"
             }
         ]
     }

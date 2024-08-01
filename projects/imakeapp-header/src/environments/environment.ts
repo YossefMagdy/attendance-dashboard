@@ -4,6 +4,7 @@
 let base_url: string = 'https://imake-app.com';
 
 export const environment = {
+   school_url:'https://madaresapp.codesroots.com/api',
    production: false,
    ApiEndPoint2: `${base_url}:4000/api`,
    ApiEndPoint: `${base_url}:4000/api`,

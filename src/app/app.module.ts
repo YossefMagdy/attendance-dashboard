@@ -31,7 +31,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { AppRoutingModule } from './core/interceptors/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 
 
 
@@ -72,12 +72,6 @@ import { AppRoutingModule } from './core/interceptors/app-routing.module';
   providers: [
     CookieService,
     NzMessageService,
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: appInitializerFactory,
-    //   deps: [LanguageService,WebsiteAttributesService,CookieService],
-    //   multi: true
-    // },
     { provide: NZ_I18N, useValue: en_US },
 
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

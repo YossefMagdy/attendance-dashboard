@@ -76,7 +76,7 @@ export class HeaderThemesService extends BaseService implements OnInit
 
   sign_in(data: any)
   {
-    return this.http.post(`${environment.ApiEndPoint2}/companies/login`, {
+    return this.http.post(`${environment.school_url}/schoolslogin`, {
       email: data.username,
       password: data.password
     });

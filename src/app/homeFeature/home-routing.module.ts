@@ -6,10 +6,10 @@ const routes: Routes = [ {
   path: '',
   component: HomeComponent,
   children: [
-
+    {path:'',redirectTo:'school',pathMatch:'full'},
     {
-      path: "companies",
-      loadChildren: ()=> import('../companies/company.module').then( (m)=> m.CompanyModule ),
+      path: "school",
+      loadChildren: ()=> import('../school/school.module').then( (m)=> m.SchoolModule ),
     }
 
 
