@@ -5,6 +5,7 @@ import { CookieService } from "ngx-cookie-service";
 import { DELETE_CART_QUERY, FETCH_CART_QUERY, GET_CATEGORIES_QUERY, GET_Header_QUERY_THEME1, SEARCHING_ITEMS_QUERY } from "./QUERIES";
 import { environment } from "../../../environments/environment";
 import { BaseService, LanguageService, SharedFacade } from "projects/imakeapp-shared";
+import { Observable } from "rxjs";
 
 
 
@@ -74,9 +75,9 @@ export class HeaderThemesService extends BaseService implements OnInit
   }
 
 
-  sign_in(data: any)
+  sign_in(data: any):Observable<any>
   {
-    return this.http.post(`${environment.school_url}/schoolslogin`, {
+    return this.http.post<any>(`${environment.school_url}/schoolslogin`, {
       email: data.username,
       password: data.password
     });

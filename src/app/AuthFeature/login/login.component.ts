@@ -47,16 +47,17 @@ export class LoginComponent {
     this.cookie_s?.delete("token")
     this.headerService.sign_in(obj).subscribe(
       async (res: any) => {
-        if (res) {
+        console.log(res)
+        if (!res.error) {
           this.data = res;
           this.cookie_s?.set("school", JSON.stringify(res.data.id), undefined, '/');
           this.cookie_s?.set("token", JSON.stringify(res.token), undefined, '/');
           this.router.navigateByUrl(`/home`); 
+          return
         }
-        else
-        {
-        this.message.error("اسم المستخدم او كلمة المرور خاطئة");
-        }
+        this.cookie_s.delete('school')
+        this.message.error(res.message || "اسم المستخدم او كلمة المرور خاطئة");
+
       },
       (err) => {
         this.message.error("اسم المستخدم او كلمة المرور خاطئة");
